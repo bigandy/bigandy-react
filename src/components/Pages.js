@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { Link } from 'react-router-dom';
+
 class Pages extends Component {
 	constructor(props) {
 		super(props);
@@ -18,12 +20,9 @@ class Pages extends Component {
 					}
 
 					return (
-						// <Link to={ `pages/${item.id}`}>
-						// 	{item.title.rendered}
-						// </Link>
-						<a href={ `pages/${item.id}` } key={item.id}>
+						<Link to={ `/pages/${item.id}`} key={ item.id }>
 							{item.title.rendered}
-						</a>
+						</Link>
 					);
 				});
 

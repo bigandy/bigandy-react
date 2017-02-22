@@ -17,7 +17,7 @@ class Posts extends Component{
 			}).then((posts) => {
 				const postsOutput = posts.map(item => {
 					return (
-						<Article {...item} />
+						<Article {...item} key={item.id} />
 					);
 				});
 

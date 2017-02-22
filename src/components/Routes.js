@@ -1,15 +1,16 @@
-// import { Router, Route, Link } from 'react-router';
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-import SingelPage from './SinglePage';
-import SingelPost from './SinglePost';
+import App from './App';
+// import SingleArticle from './SingleArticle';
+// import Posts from './Posts';
 
-// const Routes = (props) => (
-// 	<Router {...props}>
-// 		<Route path="/" component={ Posts }></Route>
-// 		<Route path="/posts/:id" component={ SingleArticle }></Route>
-// 		<Route path="/pages/:id" component={ SinglePage }></Route>
-// 	</Router>
-// );
+const Routes = (props) => (
+	<Router {...props}>
+		<App />
+		{/* <Route path="/posts/:id" component={ SingleArticle }></Route> */}
+	</Router>
+);
 
 
 
