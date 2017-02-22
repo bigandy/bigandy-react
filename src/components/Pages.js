@@ -19,9 +19,27 @@ class Pages extends Component {
 						return null;
 					}
 
+					let href = '';
+
+					if (item.slug === 'home') {
+						href = '/';
+					} else {
+						href = `/pages/${item.slug}`;
+					}
+
 					return (
-						<Link to={ `/pages/${item.id}`} key={ item.id }>
-							{item.title.rendered}
+						<Link
+							to={{
+							  pathname: href,
+							  state: {
+								  blogInfo: {
+									  'content': item.content.rendered,
+						  		  }
+					  		}
+							}}
+							key={ item.id }
+						>
+							{ item.title.rendered }
 						</Link>
 					);
 				});
@@ -39,7 +57,7 @@ class Pages extends Component {
 			<header>
 				<div className="container">
 					<h1 className="header__title">
-						<a href="/">Andrew Hudson</a>
+						<Link to="/">Andrew Hudson</Link>
 					</h1>
 					<nav className="header__nav">
 						{ pages }
