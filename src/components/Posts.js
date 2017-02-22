@@ -12,6 +12,7 @@ class Posts extends Component{
 	componentDidMount() {
 		fetch(`https://big-andy.co.uk/wp-json/wp/v2/posts?per_page=${this.postsNumber}`)
 			.then(function(response) {
+				console.log('doing a post fetch');
 				// Convert to JSON
 				return response.json();
 			}).then((posts) => {

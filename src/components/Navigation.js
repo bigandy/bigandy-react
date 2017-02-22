@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { Link } from 'react-router-dom';
 
-class Pages extends Component {
+class Navigation extends Component {
 	constructor(props) {
 		super(props);
 		this.state = { pages: [] }
@@ -11,6 +11,7 @@ class Pages extends Component {
 	componentDidMount() {
 		fetch('https://big-andy.co.uk/wp-json/wp/v2/pages')
 			.then(function(response) {
+				console.log('doing a page fetch');
 				// Convert to JSON
 				return response.json();
 			}).then((pages) => {
@@ -19,12 +20,10 @@ class Pages extends Component {
 						return null;
 					}
 
-					let href = '';
+					let href = `/pages/${item.slug}`;
 
 					if (item.slug === 'home') {
 						href = '/';
-					} else {
-						href = `/pages/${item.slug}`;
 					}
 
 					return (
@@ -68,4 +67,4 @@ class Pages extends Component {
 	}
 };
 
-export default Pages;
+export default Navigation;
