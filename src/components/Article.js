@@ -4,20 +4,57 @@ import { Link } from 'react-router-dom';
 
 class Article extends Component {
 	render() {
-		const title = this.props.title.rendered;
-		const content = this.props.content.rendered;
+		let title = this.props.title;
+		let content = this.props.content;
+
+		let wrapperClass = '';
+		let renderedContent = '';
+		let header;
+
+		if (this.props.isList) {
+			wrapperClass = 'post';
+			renderedContent = this.props.excerpt;
+
+			header = (
+				<header>
+					<h2 className="post__title">
+						<Link to={{
+							pathname: this.props.link,
+							state: {
+								blogInfo: {
+									title,
+									content,
+									'isSingle': false
+								}
+							}
+						}}>
+							{ title }
+						</Link>
+					</h2>
+				</header>
+			);
+		} else { // Single Post
+			const blogInfo = this.props.location.state.blogInfo;
+
+			wrapperClass = 'post post--single';
+			renderedContent = blogInfo.content;
+
+			header = (
+				<header>
+					<Link to="/">Back</Link>
+
+					<h2 className="post__title">
+						{ blogInfo.title }
+					</h2>
+				</header>
+			);
+		}
 
 		return (
-			<article className="post">
-				<h2 className="post__title">
-					<Link
-						to={{
-						  pathname: `/posts/${this.props.id}`,
-						  state: { blogInfo: {title, content} }
-						}}
-						dangerouslySetInnerHTML={ { __html: title } }></Link>
-				</h2>
-				<div dangerouslySetInnerHTML={ { __html: this.props.excerpt.rendered } }></div>
+			<article className={ wrapperClass }>
+				{ header }
+
+				<div dangerouslySetInnerHTML={ { __html: renderedContent } }></div>
 			</article>
 		);
 	}

@@ -53,7 +53,7 @@ class Navigation extends Component {
 		let pages = this.state.pages.length > 0 && this.state.pages.map(page => page);
 
 		return (
-			<header>
+			<header className="header">
 				<div className="container">
 					<h1 className="header__title">
 						<Link to="/">Andrew Hudson</Link>

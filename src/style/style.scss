@@ -1,11 +1,22 @@
-@import "../../node_modules/normalize-scss/sass/normalize";
-@include normalize(); // call in normalize via mixin
-
 @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville|Playfair+Display');
 
 * {
 	--title-font: initial;
 	font-family: var(--title-font);
+}
+
+
+p {
+	line-height: 1.5;
+}
+
+li {
+	margin-bottom: .5em;
+}
+
+.email {
+	display: inline-block;
+	padding-bottom: .5em;
 }
 
 h1,
@@ -16,6 +27,10 @@ h3 {
 
 h2:not(.post__title) {
 	padding-left: .5em;
+}
+
+.single-page h2 {
+	padding-left: 0;
 }
 
 body {
@@ -36,22 +51,34 @@ body {
 	padding-right: 0;
 }
 
-header {
+.header {
 	background-color: hsla(200, 100%, 50%, 0.4);
 	border-bottom: 5px solid hsla(200, 100%, 50%, 0.4);
 	padding-top: 3em;
 	padding-bottom: 2.5em;
 
-	.#{&}__title {
+	&__title {
 		margin-top: 0;
 		font-size: 3rem;
 		font-weight: bold;
 	}
 
-	.#{&}__nav {
+	&__nav {
 		a {
 			text-decoration: none;
 			margin-right: 10px;
+			padding-bottom: 0.5em;
+			border-bottom: 3px solid transparent;
+
+			&:hover,
+			&:focus {
+				color: red;
+			}
+		}
+
+		.link--active {
+			color: black;
+			border-bottom-color: currentColor;
 		}
 	}
 }
@@ -79,7 +106,7 @@ main {
 	z-index: 2;
 	background-image: repeating-linear-gradient(45deg, rgba(white, 0.25), rgba(white, 0.25) 35px, rgba(red, 0.25) 35px, rgba(red, 0.25) 70px);
 	max-width: 20em;
-
+	margin-left: 1em;
 	display: flex;
 	flex-direction: column;
 
@@ -123,50 +150,24 @@ footer {
 	}
 
 	.post {
-		flex: 1 1 200px;
-		max-width: 400px;
+		flex: 1 1 100%;
+		padding-left: .5em;
+		padding-right: .5em;
 
-		@media (min-width: 450px) {
-			padding-left: .5em;
-			padding-right: .5em;
+		@media (min-width: 600px) {
+			flex: 1 1 calc(33.3333% - 1em);
 		}
 
 		@media (min-width: 1000px) {
-			flex: 1 1 450px;
-			max-width: 50%;
+			flex: 1 1 calc(25% - 1em);
 		}
 	}
 }
 
-@supports (display: grid) {
-	.posts {
-		display: grid;
-		grid-template-columns: auto 200px 50%;
-		grid-row-gap: 2em;
-		grid-column-gap: 1em;
-
-		.post {
-			background-color: rgba(yellow, 0.1);
-			border-radius: 1em;
-			padding-left: 1em;
-			padding-right: 1em;
-
-			&:hover {
-				background-color: rgba(yellow, 0.4);
-			}
-		}
-
-		@supports (display: flex) {
-			.post {
-				flex: none;
-				max-width: none;
-			}
-		}
+.single {
+	&-page,
+	&-post {
+		padding-left: 1em;
+		padding-right: 1em;
 	}
-}
-
-.single-page,
-.single-post {
-	padding-left: 1em;
-	padding-right: 1em;
 }
