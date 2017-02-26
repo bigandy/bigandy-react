@@ -1,3 +1,6 @@
+@import "../../node_modules/normalize-scss/sass/normalize";
+@include normalize(); // call in normalize via mixin
+
 @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville|Playfair+Display');
 
 * {
