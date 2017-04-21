@@ -8,6 +8,10 @@ import Article from './Article';
 import SinglePage from './SinglePage';
 import Notes from './Notes';
 
+import showPosts from '../helpers/showPosts';
+import postsStore from '../helpers/postsStore';
+import fetchFromAPI from '../helpers/fetchFromAPI';
+
 class App extends Component {
 	constructor(props) {
 		super(props);
@@ -16,27 +20,25 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		fetch(`https://big-andy.co.uk/wp-json/wp/v2/posts?per_page=${this.postsNumber}`)
-			.then((response) => {
-				console.log('doing a post fetch');
-				// Convert to JSON
-				return response.json();
-			}).then((posts) => {
-				const postsOutput = posts.map(item => {
-					return (
-						<Article
-							content={ item.content.rendered }
-							excerpt={ item.excerpt.rendered }
-							link={ `/posts/${item.id}` }
-							title={ item.title.rendered }
-							isList={ true }
-							key={ item.id }
-						/>
-					);
-				});
+		postsStore.outbox('readwrite')
+			.then(db => db.getAll())
+			.then(allObjs => {
+				return new Promise((resolve, reject) => {
+					if (allObjs.length >= 1) {
+						console.log('already have posts in indexedDB')
 
+						resolve(showPosts(allObjs));
+					} else {
+						console.log('do not have posts');
+
+						fetchFromAPI('posts', this.postsNumber).then((posts) => {
+							resolve(showPosts(posts, true));
+						});
+					}
+				})
+			}).then(posts => {
 				this.setState({
-					posts: postsOutput,
+					posts
 				});
 			});
 	};

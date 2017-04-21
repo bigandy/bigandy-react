@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 
 import { Link } from 'react-router-dom';
 
+import showPages from '../helpers/showPages';
+import pagesStore from '../helpers/pagesStore';
+import fetchFromAPI from '../helpers/fetchFromAPI';
+
 class Navigation extends Component {
 	constructor(props) {
 		super(props);
@@ -15,37 +19,29 @@ class Navigation extends Component {
 				// Convert to JSON
 				return response.json();
 			}).then((pages) => {
-				const pagesOutput = pages.map(item => {
-					if (item.slug === 'style-guide') {
-						return null;
-					}
+				pagesStore.outbox('readwrite')
+					.then(db => db.getAll())
+					.then(allObjs => {
+						return new Promise((resolve, reject) => {
+							if (allObjs.length >= 1) {
+								console.log('already have pages in indexedDB')
 
-					let href = `/pages/${item.slug}`;
+								resolve(showPages(allObjs));
+							} else {
+								console.log('do not have posts');
 
-					if (item.slug === 'home') {
-						href = '/';
-					}
+								fetchFromAPI('pages', 10).then((pages) => {
+									resolve(showPages(pages, true));
+								});
+							}
+						})
+					}).then(pages => {
+						console.log('Here are the pages', pages);
 
-					return (
-						<Link
-							to={{
-							  pathname: href,
-							  state: {
-								  blogInfo: {
-									  'content': item.content.rendered,
-						  		  }
-					  		}
-							}}
-							key={ item.id }
-						>
-							{ item.title.rendered }
-						</Link>
-					);
-				});
-
-				this.setState({
-					pages: pagesOutput,
-				});
+						this.setState({
+							pages
+						});
+					});
 			});
 	}
 
