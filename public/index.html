@@ -68,5 +68,12 @@
 	  		<p>&copy;2006 - 2017 Andrew JD Hudson</p>
 	  	</div>
 	  </footer>
+	  <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/sw.js');
+        });
+      }
+    </script>
   </body>
 </html>
