@@ -18,7 +18,7 @@
     "react-router-redux": "^4.0.8",
     "redux": "^3.6.0"
   },
-  "homepage": "https://bigandy.github.io/bigandy-react",
+  "homepage": "https://bar.bigandy.github.io",
   "scripts": {
     "start": "npm-run-all -p watch-css start-js",
     "build": "npm run build-css && react-scripts build",
