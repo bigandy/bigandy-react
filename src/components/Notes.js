@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Notes = () => {
+const Notes = ({posts}) => {
 	return (
 		<div className="notes">
 			<h2 className="main__introduction">I'm a front-end developer based in sunny Oxfordshire. hello!</h2>
