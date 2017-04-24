@@ -1,83 +1,46 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-    <link rel="preload" href="%PUBLIC_URL%/fonts/playfair-display-v10-latin-700.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="%PUBLIC_URL%/fonts/libre-baskerville-v4-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
-    <meta name="theme-color" content="#512DA8">
-    <!--
-      Notice the use of %PUBLIC_URL% in the tag above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+	<link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+	<link rel="preload" href="%PUBLIC_URL%/fonts/playfair-display-v10-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="%PUBLIC_URL%/fonts/libre-baskerville-v4-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+	<meta name="theme-color" content="#512DA8">
+	<!--
+	  Notice the use of %PUBLIC_URL% in the tag above.
+	  It will be replaced with the URL of the `public` folder during the build.
+	  Only files inside the `public` folder can be referenced from the HTML.
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>Bigandy React App</title>
+	  Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+	  work correctly both with client-side routing and a non-root public URL.
+	  Learn how to configure a non-root public URL by running `npm run build`.
+	-->
+	<title>Bigandy React App</title>
   </head>
   <body>
 	<div id="app">
-	  	<header>
-	  		<div class="container">
-	  			<h1 class="header__title">Andrew Hudson</h1>
-	  			<nav class="header__nav">
-	  				<a href="https://big-andy.co.uk/">Home</a>
-	  				<a href="https://big-andy.co.uk/contact/">Contact</a>
-	  				<a href="https://big-andy.co.uk/about/">About</a>
-	  				<a href="https://big-andy.co.uk/cv/">CV</a>
-	  			</nav>
-	  		</div>
-	  	</header>
+		<header>
+			<div class="container">
+				<h1 class="header__title">Andrew Hudson</h1>
+				<nav class="header__nav">
+					<a href="https://big-andy.co.uk/">Home</a>
+					<a href="https://big-andy.co.uk/contact/">Contact</a>
+					<a href="https://big-andy.co.uk/about/">About</a>
+					<a href="https://big-andy.co.uk/cv/">CV</a>
+				</nav>
+			</div>
+		</header>
+	</div>
 
-	  	<main>
-	  		<div class="container container--main">
-	  			<section class="main__posts">
-	  				<h2>Latest Posts</h2>
-	  			</section>
 
-	  			<div class="notes">
-	  				<h2 class="main__introduction">I'm a front-end developer based in sunny Oxfordshire. hello!</h2>
-
-	  				<img class="avatar" src="%PUBLIC_URL%/images/me-avatar.jpg" width="280" height="280" alt="Andrew Hudson" />
-
-	  				<p>This should be:</p>
-
-	  				<ul class="notes__list">
-	  					<li>Utilise the full-width of the browser</li>
-	  					<li>Using grid or flexbox with fallback</li>
-	  					<li>loaded from the WP-API,</li>
-	  					<li>cached in Service Worker,</li>
-	  					<li>Using React Router</li>
-	  					<li>Should work without JS i.e. server-rendered initially if possible</li>
-	  					<li>Posts and Pages both served from the WP-API</li>
-	  					<li>Style Guide</li>
-	  				</ul>
-
-	  				<h3>Optional Extras:</h3>
-	  				<ul class="notes__list">
-	  					<li>Have some kind of real-time thing using socket.io</li>
-	  					<li>Use external API e.g. Strava API to grab latest running statistics. Done daily, at the end of each  day or triggered by external node tracker?? Investigate this.</li>
-	  				</ul>
-	  			</div>
-	  		</div>
-	  	</main>
-	  </div>
-
-	  <footer>
-	  	<div class="container">
-	  		<p>&copy;2006 - 2017 Andrew JD Hudson</p>
-	  	</div>
-	  </footer>
-	  <script>
-      	if ('serviceWorker' in navigator) {
-	      window.addEventListener('load', function() {
-	        navigator.serviceWorker.register('/service-worker.js');
-	      });
-	    }
-    </script>
-  </body>
+	<script>
+		if ('serviceWorker' in navigator) {
+			window.addEventListener('load', function() {
+				navigator.serviceWorker.register('/service-worker.js');
+			});
+		}
+	</script>
+</body>
 </html>
