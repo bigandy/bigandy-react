@@ -9,14 +9,19 @@ import SinglePage from './SinglePage';
 import Notes from './Notes';
 
 import showPosts from '../helpers/showPosts';
+import showPages from '../helpers/showPages';
 import postsStore from '../helpers/postsStore';
+import pagesStore from '../helpers/pagesStore';
 import fetchFromAPI from '../helpers/fetchFromAPI';
 
 class App extends Component {
 	constructor(props) {
 		super(props);
 		this.postsNumber = 10;
-		this.state = { posts: [] }
+		this.state = {
+			posts: [],
+			pages: [],
+		};
 	}
 
 	componentDidMount() {
@@ -41,13 +46,40 @@ class App extends Component {
 					posts
 				});
 			});
+		pagesStore.outbox('readwrite')
+			.then(db => db.getAll())
+			.then(allObjs => {
+				return new Promise((resolve, reject) => {
+					if (allObjs.length >= 1) {
+						// console.log('already have pages in indexedDB')
+
+						resolve(showPages(allObjs));
+					} else {
+						// console.log('do not have posts');
+
+						fetchFromAPI('pages', 10).then((pages) => {
+							resolve(showPages(pages, true));
+						});
+					}
+				})
+			}).then(pages => {
+				// console.log('Here are the pages', pages);
+
+				this.setState({
+					pages
+				});
+			});
 	};
 
 	render() {
 		return (
 			<Router>
 				<div>
-					<Navigation />
+					{
+						(this.state.pages.length > 0) &&
+							<Navigation pages={ this.state.pages }/>
+					}
+
 
 					<main>
 						<div className="container container--main">
@@ -55,7 +87,7 @@ class App extends Component {
 								<Route path="/" exact render={ () => {
 									if (this.state.posts.length > 0) {
 										return (
-											<Posts posts={this.state.posts} />
+											<Posts posts={ this.state.posts } />
 										);
 									} else {
 										return null;
