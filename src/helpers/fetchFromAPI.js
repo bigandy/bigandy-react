@@ -5,7 +5,7 @@ const fetchFromAPI = (type = 'posts', number = 9) => {
 	return new Promise((resolve, reject) => {
 		fetch(`https://big-andy.co.uk/wp-json/wp/v2/${type}?per_page=${number}`)
 			.then((response) => {
-				console.log('doing a post fetch');
+				// console.log('doing a post fetch');
 				// Convert to JSON
 				return response.json();
 			}).then((posts) => {

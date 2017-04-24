@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { HashRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Navigation from './Navigation';
 import Posts from './Posts';
@@ -25,11 +25,11 @@ class App extends Component {
 			.then(allObjs => {
 				return new Promise((resolve, reject) => {
 					if (allObjs.length >= 1) {
-						console.log('already have posts in indexedDB')
+						// console.log('already have posts in indexedDB')
 
 						resolve(showPosts(allObjs));
 					} else {
-						console.log('do not have posts');
+						// console.log('do not have posts');
 
 						fetchFromAPI('posts', this.postsNumber).then((posts) => {
 							resolve(showPosts(posts, true));
@@ -69,6 +69,12 @@ class App extends Component {
 							<Route path="/" exact render={() => <Notes /> } />
 						</div>
 					</main>
+
+					<footer>
+						<div className="container">
+							<p>&copy;2006 - 2017 Andrew JD Hudson</p>
+						</div>
+					</footer>
 				</div>
 			</Router>
 		);
