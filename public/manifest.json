@@ -1,5 +1,5 @@
 {
-  "short_name": "bigandy-react-pwa",
+  "short_name": "ba-react-pwa",
   "name": "BA React PWA",
   "icons": [
     {
@@ -8,6 +8,8 @@
       "type": "image/png"
     }
   ],
+  "background_color": "#FAFAFA",
+  "theme_color": "#512DA8",
   "start_url": "./",
   "display": "standalone"
 }
