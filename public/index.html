@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+    <link rel="preload" href="%PUBLIC_URL%/fonts/playfair-display-v10-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="%PUBLIC_URL%/fonts/libre-baskerville-v4-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
     <!--
       Notice the use of %PUBLIC_URL% in the tag above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -38,7 +41,7 @@
 	  			<div class="notes">
 	  				<h2 class="main__introduction">I'm a front-end developer based in sunny Oxfordshire. hello!</h2>
 
-	  				<img class="avatar" src="https://avatars3.githubusercontent.com/u/603328?v=3&s=460" width="280" height="280" alt="Andrew Hudson" />
+	  				<img class="avatar" src="%PUBLIC_URL%/images/me-avatar.jpg" width="280" height="280" alt="Andrew Hudson" />
 
 	  				<p>This should be:</p>
 
@@ -69,11 +72,11 @@
 	  	</div>
 	  </footer>
 	  <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register('/sw.js');
-        });
-      }
+      	if ('serviceWorker' in navigator) {
+	      window.addEventListener('load', function() {
+	        navigator.serviceWorker.register('/service-worker.js');
+	      });
+	    }
     </script>
   </body>
 </html>

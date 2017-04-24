@@ -5,7 +5,7 @@ const Notes = () => {
 		<div className="notes">
 			<h2 className="main__introduction">I'm a front-end developer based in sunny Oxfordshire. hello!</h2>
 
-			<img className="avatar" src="https://avatars3.githubusercontent.com/u/603328?v=3&s=460" width="280" height="280" alt="Andrew Hudson" />
+			<img className="avatar" src="/images/me-avatar.jpg" width="280" height="280" alt="Andrew Hudson" />
 
 			<p>This should be:</p>
 			<ul className="notes__list">
