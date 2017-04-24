@@ -3,7 +3,7 @@ import React from 'react';
 import Article from '../components/Article';
 
 const showPosts = (posts, deep = false) => {
-	return posts.map(item => {
+	return posts.map((item, i) => {
 		if (deep === false) {
 			item = item.post;
 		}
@@ -15,6 +15,7 @@ const showPosts = (posts, deep = false) => {
 				link={ `/posts/${item.id}` }
 				title={ item.title }
 				isList={ true }
+				key={ i }
 			/>
 		);
 	});

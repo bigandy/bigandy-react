@@ -94,8 +94,24 @@ class App extends Component {
 									}
 								} }
 								/>
-								<Route path="/posts/:postid" component={ Article } />
-								<Route path="/pages/:pageid" component={ SinglePage } />
+								<Route path="/posts/:postid" render={ (props) => {
+									if (this.state.pages.length > 0) {
+										return (
+											<Article posts={ this.state.posts } { ...props } />
+										);
+									} else {
+										return null;
+									}
+								} } />
+								<Route path="/pages/:pageid" render={ (props) => {
+									if (this.state.pages.length > 0) {
+										return (
+											<SinglePage pages={ this.state.pages } { ...props } />
+										);
+									} else {
+										return null;
+									}
+								} } />
 							</section>
 
 							<Route path="/" exact render={() => <Notes /> } />

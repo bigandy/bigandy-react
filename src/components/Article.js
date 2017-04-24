@@ -34,20 +34,34 @@ class Article extends Component {
 				</header>
 			);
 		} else { // Single Post
-			const blogInfo = this.props.location.state.blogInfo;
+			const path = this.props.location.pathname;
+
+			const check404 = this.props.posts.filter(post => {
+				if (post !== null && post.props.link === path) {
+					return true;
+				} else {
+					return false;
+				}
+			});
+
+			if (check404.length > 0) {
+				header = (
+					<header>
+						<Link to="/">Back</Link>
+
+						<h2 className="post__title">
+							{ check404[0].props.title }
+						</h2>
+					</header>
+				);
+
+				// const blogInfo = this.props.location.state.blogInfo;
+				renderedContent = check404[0].props.content;
+			} else {
+				renderedContent = '<div><h1>404 Post not found</h1></h1></div>';
+			}
 
 			wrapperClass = 'post post--single';
-			renderedContent = blogInfo.content;
-
-			header = (
-				<header>
-					<Link to="/">Back</Link>
-
-					<h2 className="post__title">
-						{ blogInfo.title }
-					</h2>
-				</header>
-			);
 		}
 
 		return (
