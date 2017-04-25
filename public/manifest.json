@@ -1,8 +1,9 @@
 {
   "short_name": "ba-react-pwa",
   "name": "BA React PWA",
-  "manifest_version": 2,
-  "version": "0.2",
+  "description": "A React PWA using WordPress API for data, using IndexedDB to store posts/pages",
+  "manifest_version": 3,
+  "version": "0.3",
   "icons": [{
       "src": "images/manifest/ba-128.png",
       "type": "image/png",
