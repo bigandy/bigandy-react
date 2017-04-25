@@ -1,5 +1,4 @@
-import pagesStore from './pagesStore';
-import postsStore from './postsStore';
+import store from './store';
 
 const fetchFromAPI = (type = 'posts', number = 9) => {
 	return new Promise((resolve, reject) => {
@@ -33,7 +32,7 @@ const fetchFromAPI = (type = 'posts', number = 9) => {
 
 				postsOutput.forEach((post) => {
 					if (type === 'pages') {
-						pagesStore.outbox('readwrite')
+						store.outbox('pages', 'readwrite')
 							.then(tx => {
 								tx.put({
 									post
@@ -41,7 +40,7 @@ const fetchFromAPI = (type = 'posts', number = 9) => {
 								return tx.complete;
 						});
 					} else {
-						postsStore.outbox('readwrite')
+						store.outbox('posts', 'readwrite')
 							.then(tx => {
 								tx.put({
 									post

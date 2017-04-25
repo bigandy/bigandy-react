@@ -8,11 +8,10 @@ import Article from './Article';
 import SinglePage from './SinglePage';
 import Notes from './Notes';
 
-import showPosts from '../helpers/showPosts';
-import showPages from '../helpers/showPages';
-import postsStore from '../helpers/postsStore';
-import pagesStore from '../helpers/pagesStore';
-import fetchFromAPI from '../helpers/fetchFromAPI';
+import showPosts from './helpers/showPosts';
+import showPages from './helpers/showPages';
+import store from './helpers/store';
+import fetchFromAPI from './helpers/fetchFromAPI';
 
 class App extends Component {
 	constructor(props) {
@@ -25,7 +24,7 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		postsStore.outbox('readwrite')
+		store.outbox('posts', 'readwrite')
 			.then(db => db.getAll())
 			.then(allObjs => {
 				return new Promise((resolve, reject) => {
@@ -46,7 +45,7 @@ class App extends Component {
 					posts
 				});
 			});
-		pagesStore.outbox('readwrite')
+		store.outbox('pages', 'readwrite')
 			.then(db => db.getAll())
 			.then(allObjs => {
 				return new Promise((resolve, reject) => {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Article from '../components/Article';
+import Article from '../Article';
 
 const showPosts = (posts, deep = false) => {
 	return posts.map((item, i) => {
