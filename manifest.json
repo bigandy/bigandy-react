@@ -1,15 +1,39 @@
 {
   "short_name": "ba-react-pwa",
   "name": "BA React PWA",
-  "icons": [
+  "manifest_version": 2,
+  "version": "0.2",
+  "icons": [{
+      "src": "images/manifest/ba-128.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    }, {
+      "src": "images/manifest/ba-152.png",
+      "type": "image/png",
+      "sizes": "152x152"
+    }, {
+      "src": "images/manifest/ba-144.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    }, {
+      "src": "images/manifest/ba-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
     {
-      "src": "favicon.ico",
-      "sizes": "192x192",
-      "type": "image/png"
-    }
-  ],
+      "src": "images/manifest/ba-256.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "images/manifest/ba-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }],
   "background_color": "#FAFAFA",
   "theme_color": "#512DA8",
   "start_url": "./",
-  "display": "standalone"
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait"
 }
