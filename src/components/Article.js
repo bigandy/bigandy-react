@@ -47,7 +47,7 @@ class Article extends Component {
 			if (check404.length > 0) {
 				header = (
 					<header>
-						<Link to="/">Back</Link>
+						<Link to="/" className="post__back-link">Back</Link>
 
 						<h2 className="post__title">
 							{ check404[0].props.title }
