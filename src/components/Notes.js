@@ -5,7 +5,12 @@ const Notes = ({posts}) => {
 		<div className="notes">
 			<h2 className="main__introduction">I'm a front-end developer based in sunny Oxfordshire. hello!</h2>
 
-			<img className="avatar" src="/images/me-avatar.jpg" width="280" height="280" alt="Andrew Hudson" />
+
+			<picture>
+				<source className="avatar" srcSet="/images/me-avatar.webp" type="image/webp" />
+				<source className="avatar" srcSet="/images/me-avatar.jpg" type="image/jpeg" />
+				<img className="avatar" src="/images/me-avatar.jpg" width="280" height="280" alt="Andrew Hudson" />
+			</picture>
 
 			<p>This should be:</p>
 			<ul className="notes__list">
