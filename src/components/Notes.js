@@ -14,13 +14,13 @@ const Notes = ({posts}) => {
 
 			<p>This should be:</p>
 			<ul className="notes__list">
-				<li>Utilise the full-width of the browser</li>
-				<li>Using grid or flexbox with fallback</li>
-				<li>loaded from the WP-API,</li>
-				<li>cached in Service Worker,</li>
-				<li>Using React Router</li>
+				<li><del>Utilise the full-width of the browser</del></li>
+				<li><del>Using grid or flexbox with fallback</del></li>
+				<li><del>loaded from the WP-API,</del></li>
+				<li><del>cached in Service Worker,</del></li>
+				<li><del>Using React Router</del></li>
 				<li>Should work without JS i.e. server-rendered initially if possible</li>
-				<li>Posts and Pages both served from the WP-API</li>
+				<li><del>Posts and Pages both served from the WP-API</del></li>
 				<li>Style Guide</li>
 			</ul>
 
