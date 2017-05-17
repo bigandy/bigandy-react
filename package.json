@@ -6,7 +6,7 @@
     "gh-pages": "^0.12.0",
     "node-sass": "^4.5.0",
     "npm-run-all": "^4.0.1",
-	"react-scripts": "canary",
+	"react-scripts": "0.9.5",
     "sw-precache": "^5.1.0"
   },
   "dependencies": {
