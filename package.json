@@ -20,7 +20,7 @@
     "react-router-redux": "^4.0.8",
     "redux": "^3.7.1"
   },
-  "homepage": "https://bar.bigandy.github.io",
+  "homepage": "https://bar.bigandy.pw",
   "scripts": {
     "start": "npm-run-all -p watch-css start-js",
     "build": "npm run build-css && react-scripts build && sw-precache --config=sw-precache-config.js",
