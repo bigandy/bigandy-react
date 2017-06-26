@@ -19,6 +19,7 @@ class App extends Component {
 			posts: [],
 			pages: [],
 		};
+		this.useIDB = false;
 	};
 
 	showPosts = (posts, deep = false) => {
@@ -74,6 +75,7 @@ class App extends Component {
 	};
 
 	componentDidMount() {
+
 		store.outbox('posts', 'readwrite')
 			.then(db => db.getAll())
 			.then(allObjs => {
